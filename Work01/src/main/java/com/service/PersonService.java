@@ -9,7 +9,7 @@ public interface PersonService {
     //删除一个Person
     int deleteByPersonId(Integer id);
     //更改一个Person
-    int updateByPersonId(Integer id);
+    int updateByPersonId(Person person);
     //查询一个Person
     Person selectByPersonId(Integer id);
     //查询所有的Person

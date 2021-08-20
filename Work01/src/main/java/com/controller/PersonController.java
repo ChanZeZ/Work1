@@ -3,9 +3,13 @@ package com.controller;
 import com.dao.Person;
 import com.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -14,30 +18,50 @@ public class PersonController {
     private PersonService personService;
 
     static Person person;
-    static   {
+
+    static {
         person = new Person();
-        person.setId(6);
-        person.setName("szy");
-        person.setAge(18);
+        person.setId(1);
+        person.setName("ccc");
+        person.setAge(20);
     }
+
     @RequestMapping(value = "/add")
-    public String students () {
+    public String students() {
 
         int result = personService.insertPerson(person);
         //System.out.println("插入的结果是："+result);
-        return result+"";
+        return result + "成功增加";
     }
+
     @RequestMapping(value = "/del")
-    public String delperson () {
-        int delId = 2;
+    public String delperson(@Valid int delId) {
+
         int result = personService.deleteByPersonId(delId);
         //System.out.println("插入的结果是："+result);
-        return result+"成功删除";
+        return result + "成功删除";
     }
+
+    @RequestMapping(value = "/update")
+    public String update() {
+        int result = personService.updateByPersonId(person);
+        //System.out.println("插入的结果是："+result);
+        return result + "成功修改";
+    }
+
     @RequestMapping(value = "/findAll")
-    public String findAll () {
+    public String findAll() {
         List<Person> people = personService.selectAllPerson();
         people.stream().forEach(System.out::println);
-        return people.toString()+"";
+        return people.toString() + "成功查询";
+    }
+
+    @RequestMapping("/hello")
+    public String hello(Model m) throws Exception {
+        m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
+        if (true) {  //制造必然异常
+            throw new Exception("some exception 异常内容！");
+        }
+        return "hello";  //视图重定向hello.jsp
     }
 }

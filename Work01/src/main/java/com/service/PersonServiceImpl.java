@@ -23,8 +23,8 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public int updateByPersonId(Integer id) {
-        return personMapper.updateByPrimaryKey(id);
+    public int updateByPersonId(Person person) {
+        return personMapper.updateByPrimaryKey(person);
     }
 
     @Override

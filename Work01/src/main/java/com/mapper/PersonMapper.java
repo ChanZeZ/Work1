@@ -14,7 +14,7 @@ public interface PersonMapper {
     int deleteByPrimaryKey(Integer id);
     //更改一个Person
     @Update("update person set name =#{name},age=#{age} where id=#{id}")
-    int updateByPrimaryKey(Integer id);
+    int updateByPrimaryKey(Person person);
     //查询一个Person
     @Select("select id,name ,age from person where id = #{id}")
     Person selectByPrimaryKey(Integer id);
