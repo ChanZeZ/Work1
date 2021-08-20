@@ -61,6 +61,6 @@ public class PersonController {
         if (true) {  //制造必然异常
             throw new Exception("some exception 异常内容！");
         }
-        return "hello";  
+        return "hello";
     }
 }
