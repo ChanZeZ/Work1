@@ -21,39 +21,37 @@ public class PersonController {
 
     static {
         person = new Person();
-        person.setId(1);
+        person.setId(100);
         person.setName("ccc");
         person.setAge(20);
     }
 
     @RequestMapping(value = "/add")
     public String students() {
-
         int result = personService.insertPerson(person);
         //System.out.println("插入的结果是："+result);
-        return result + "成功增加";
+        return result + "";
     }
 
     @RequestMapping(value = "/del")
     public String delperson(@Valid int delId) {
-
         int result = personService.deleteByPersonId(delId);
         //System.out.println("插入的结果是："+result);
-        return result + "成功删除";
+        return result + "";
     }
 
     @RequestMapping(value = "/update")
     public String update() {
         int result = personService.updateByPersonId(person);
         //System.out.println("插入的结果是："+result);
-        return result + "成功修改";
+        return result + "";
     }
 
     @RequestMapping(value = "/findAll")
     public String findAll() {
         List<Person> people = personService.selectAllPerson();
         people.stream().forEach(System.out::println);
-        return people.toString() + "成功查询";
+        return people.toString() + "";
     }
 
     @RequestMapping("/hello")
