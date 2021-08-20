@@ -34,7 +34,8 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/del")
-    public String delperson(@Valid int delId) {
+    public String delperson() {
+        int delId = 100;
         int result = personService.deleteByPersonId(delId);
         //System.out.println("插入的结果是："+result);
         return result + "";
