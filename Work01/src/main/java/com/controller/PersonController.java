@@ -1,17 +1,17 @@
 package com.controller;
 
-import com.dao.Person;
+import com.entity.Person;
 import com.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
+@SuppressWarnings("AlibabaClassMustHaveAuthor")
 @RestController
 public class PersonController {
     @Autowired
@@ -29,7 +29,6 @@ public class PersonController {
     @RequestMapping(value = "/add")
     public String students() {
         int result = personService.insertPerson(person);
-        //System.out.println("插入的结果是："+result);
         return result + "";
     }
 
@@ -37,14 +36,12 @@ public class PersonController {
     public String delperson() {
         int delId = 100;
         int result = personService.deleteByPersonId(delId);
-        //System.out.println("插入的结果是："+result);
         return result + "";
     }
 
     @RequestMapping(value = "/update")
     public String update() {
         int result = personService.updateByPersonId(person);
-        //System.out.println("插入的结果是："+result);
         return result + "";
     }
 
@@ -58,7 +55,7 @@ public class PersonController {
     @RequestMapping("/hello")
     public String hello(Model m) throws Exception {
         m.addAttribute("now", DateFormat.getDateTimeInstance().format(new Date()));
-        if (true) {  //制造必然异常
+        if (true) {
             throw new Exception("some exception 异常内容！");
         }
         return "hello";

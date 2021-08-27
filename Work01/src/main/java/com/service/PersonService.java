@@ -1,17 +1,36 @@
 package com.service;
 
-import com.dao.Person;
+import com.entity.Person;
 import java.util.List;
 
+@SuppressWarnings("AlibabaClassMustHaveAuthor")
 public interface PersonService {
-    //增加一个Person
+    /** 新增
+     * @param person
+     * @return int
+     */
     int insertPerson(Person person);
-    //删除一个Person
+
+    /** 删除
+     * @param id
+     * @return int
+     */
     int deleteByPersonId(Integer id);
-    //更改一个Person
+
+    /** 更新
+     * @param person
+     * @return int
+     */
     int updateByPersonId(Person person);
-    //查询一个Person
+
+    /** 查找
+     * @param id
+     * @return Person
+     */
     Person selectByPersonId(Integer id);
-    //查询所有的Person
+
+    /** 查找全部
+     * @return List</>
+     */
     List<Person> selectAllPerson();
 }

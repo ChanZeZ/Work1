@@ -1,12 +1,13 @@
 package com.service;
 
-import com.dao.Person;
+import com.entity.Person;
 import com.mapper.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@SuppressWarnings("AlibabaClassMustHaveAuthor")
 @Service
 public class PersonServiceImpl implements PersonService {
     @Autowired
